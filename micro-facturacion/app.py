@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route('/facturas', methods=['GET', 'POST'])
-@app.route('/facturas/<int:id>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/facturas/<int:id>', methods=['GET'])
 def manage_facturas(id = None):
     try:
         if request.method == 'GET':
@@ -18,9 +18,6 @@ def manage_facturas(id = None):
             req_data = request.get_json()
             Facturas.create(**req_data)
             return jsonify({'message': 'Factura registrada con exito!'})
-        elif request.method == 'DELETE':
-            Facturas.delete_by_id(id)
-            return jsonify({'message': 'Factura eliminada con exito!'})
         else:
             return jsonify({'message': f'ERROR: Metodo {request.method} no implementado'})
     except Exception as e:
