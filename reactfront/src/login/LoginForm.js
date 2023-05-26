@@ -7,7 +7,7 @@ import { Alert } from "bootstrap";
 import { sha256, sha224 } from 'js-sha256';
 
 
-const URI = 'http://127.0.0.1:5000/cliente'
+const URI = 'http://127.0.0.1:9000/cliente'
 
 const CompLogin = () => {
     const navigate = useNavigate()
